@@ -57,5 +57,52 @@ This file defines two services: The db service and the web service.
 
 ###### 10. Save and close the docker-compose.yml file.  
 
+## Connect the database  
 
+###### 1. In your project directory, edit the <Django-project>/settings.py file.  
+
+###### 2. Replace the DATABASES = ... with the following:  
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
+    }
+}
+
+```
+
+These settings are determined by the postgres Docker image specified in docker-compose.yml.    
+
+###### 3. Save and close the file.  
+###### 4. Run the docker-compose up command from the top level directory for your project.  
+
+```
+$ docker-compose up
+djangosample_db_1 is up-to-date
+Creating djangosample_web_1 ...
+Creating djangosample_web_1 ... done
+Attaching to djangosample_db_1, djangosample_web_1
+db_1   | The files belonging to this database system will be owned by user "postgres".
+db_1   | This user must also own the server process.
+db_1   |
+db_1   | The database cluster will be initialized with locale "en_US.utf8".
+db_1   | The default database encoding has accordingly been set to "UTF8".
+db_1   | The default text search configuration will be set to "english".
+
+. . .
+
+web_1  | May 30, 2017 - 21:44:49
+web_1  | Django version 1.11.1, using settings 'composeexample.settings'
+web_1  | Starting development server at http://0.0.0.0:8000/
+web_1  | Quit the server with CONTROL-C.
+```
+
+At this point, your Django app should be running at port 8000 on your Docker host.   
+On Docker for Mac and Docker for Windows, go to http://localhost:8000 on a web browser to see   
+the Django welcome page.
 
