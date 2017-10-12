@@ -106,3 +106,5 @@ At this point, your Django app should be running at port 8000 on your Docker hos
 On Docker for Mac and Docker for Windows, go to http://localhost:8000 on a web browser to see   
 the Django welcome page.
 
+NOTE: for creating super user for django project use the script provided at the management/commands/createsu.
+NOTE: Modify the database settings in <Django-project>/settings.py
